@@ -10,7 +10,7 @@ jobs:
       - name: Add IP to whitelist
         id: addip
         run: |
-          curl -H "Content-Type: application/json" -A "Mozilla/5.0 (compatible;  MSIE 7.01; Windows NT 5.0)" -H "Authorization: Bearer ${{ secrets.ADM_TOOLS_API_TOKEN }}" --request POST --data '{"account_id": "${{ secrets.ADM_TOOLS_ACCOUNT_ID }}", "ip": "${{ steps.ip.outputs.ipv4 }}"}' https://adm.tools/action/hosting/account/ssh/ip/send/
+          curl -H "Content-Type: application/json" -H "Authorization: Bearer ${{ secrets.ADM_TOOLS_API_TOKEN }}" --request POST --data '{"account_id": "${{ secrets.ADM_TOOLS_ACCOUNT_ID }}", "ip": "${{ steps.ip.outputs.ipv4 }}"}' https://adm.tools/action/hosting/account/ssh/ip/send/
       - uses: actions/checkout@v2
       - name: rsync deploy
         uses: burnett01/rsync-deployments@5.2
